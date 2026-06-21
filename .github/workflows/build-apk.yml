@@ -18,7 +18,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Set up Java (required for Android Gradle build)
         uses: actions/setup-java@v4
@@ -36,7 +35,7 @@ jobs:
         run: npm run build
 
       - name: Sync Capacitor (copies dist/ into the Android project)
-        run: npx cap sync android
+        run: node_modules/.bin/cap sync android
 
       - name: Make gradlew executable
         run: chmod +x android/gradlew
